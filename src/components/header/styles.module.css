@@ -1,0 +1,19 @@
+.header_navbar {
+  background-color: #202833;
+  color: #ffffff;
+}
+
+.header_navbar_brand {
+  color: #ffffff;
+}
+
+.header_navbar_links {
+  color: #ffffff;
+}
+
+.header_navbar_links:hover {
+  color: #66fcf1;
+  font-weight: bolder;
+  font-size: 1.25rem;
+  cursor: pointer;
+}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from './styles.module.css';
 
 import {
   Collapse,
@@ -16,43 +17,44 @@ import {
 } from 'reactstrap';
 
 const Header = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
+  // const toggle = () => setIsOpen(!isOpen);
 
-  const toggle = () => setIsOpen(!isOpen);
+  const navItems = [
+    { title: 'About' },
+    { title: 'Skills' },
+    { title: 'Experience' },
+    { title: 'Education' },
+    { title: 'Projects' },
+    { title: 'Contact' },
+  ];
 
   return (
     <>
-      <div className="bg-primary">
-        <Navbar>
-          <NavbarBrand href="/">LA</NavbarBrand>
-          <NavbarToggler onClick={toggle} />
-
-          <Collapse isOpen={isOpen} navbar>
-            <Nav className="me-auto" navbar>
-              <NavItem>
-                <NavLink href="/components/">Components</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">
-                  GitHub
+      <Navbar
+        id="header-navbar"
+        className={`${styles.header_navbar}`}
+        fixed="top"
+      >
+        <NavbarBrand
+          id="header-navbar-brand"
+          className={`${styles.header_navbar_brand}`}
+          href="/"
+        >
+          <div>LA</div>
+        </NavbarBrand>
+        <Nav>
+          {navItems.map((item) => {
+            return (
+              <NavItem key={item.title} className="my-auto">
+                <NavLink className={`${styles.header_navbar_links}`}>
+                  {item.title}
                 </NavLink>
               </NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Options
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>Option 1</DropdownItem>
-                  <DropdownItem>Option 2</DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>Reset</DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-            </Nav>
-            <NavbarText>Simple Text</NavbarText>
-          </Collapse>
-        </Navbar>
-      </div>
+            );
+          })}
+        </Nav>
+      </Navbar>
     </>
   );
 };

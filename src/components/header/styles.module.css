@@ -1,10 +1,13 @@
 .header_navbar {
-  background-color: #202833;
+  background-color: #1f2833;
   color: #ffffff;
+  font-size: 1.5rem;
 }
 
-.header_navbar_brand {
+.header_navbar_brand,
+.header_navbar_brand:hover {
   color: #ffffff;
+  font-size: 2rem;
 }
 
 .header_navbar_links {
@@ -13,7 +16,5 @@
 
 .header_navbar_links:hover {
   color: #66fcf1;
-  font-weight: bolder;
-  font-size: 1.25rem;
   cursor: pointer;
 }

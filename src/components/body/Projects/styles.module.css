@@ -1,0 +1,9 @@
+.projects_container,
+.card {
+  background-color: #1f2833;
+}
+
+.card {
+  border: 4px solid #3fe4d9;
+  color: #3fe4d9;
+}

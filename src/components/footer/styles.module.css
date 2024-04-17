@@ -1,4 +1,6 @@
 .footer {
   background-color: #202833;
   color: #ffffff;
+  display: flex;
+  flex-direction: row-reverse;
 }

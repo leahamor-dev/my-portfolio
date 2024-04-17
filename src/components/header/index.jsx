@@ -1,25 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './styles.module.css';
-
 import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  NavbarText,
-} from 'reactstrap';
+  Link,
+  DirectLink,
+  Element,
+  Events,
+  animateScroll as scroll,
+  scrollSpy,
+  scroller,
+} from 'react-scroll';
 
-const Header = (props) => {
-  // const [isOpen, setIsOpen] = useState(false);
-  // const toggle = () => setIsOpen(!isOpen);
+import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 
+const Header = () => {
   const navItems = [
     { title: 'About' },
     { title: 'Skills' },
@@ -30,24 +23,23 @@ const Header = (props) => {
   ];
 
   return (
-    <>
-      <Navbar
-        id="header-navbar"
-        className={`${styles.header_navbar}`}
-        fixed="top"
-      >
+    <div id="header">
+      <Navbar id="header_navbar" className={`${styles.header_navbar}`}>
         <NavbarBrand
-          id="header-navbar-brand"
-          className={`${styles.header_navbar_brand}`}
-          href="/"
+          id="header_navbar_brand"
+          className={`${styles.header_navbar_brand} mx-2`}
         >
           <div>LA</div>
         </NavbarBrand>
         <Nav>
           {navItems.map((item) => {
             return (
-              <NavItem key={item.title} className="my-auto">
-                <NavLink className={`${styles.header_navbar_links}`}>
+              <NavItem key={item.title}>
+                <NavLink
+                  tag={Link}
+                  to={item.title.toLocaleLowerCase()}
+                  className={`${styles.header_navbar_links}`}
+                >
                   {item.title}
                 </NavLink>
               </NavItem>
@@ -55,7 +47,7 @@ const Header = (props) => {
           })}
         </Nav>
       </Navbar>
-    </>
+    </div>
   );
 };
 

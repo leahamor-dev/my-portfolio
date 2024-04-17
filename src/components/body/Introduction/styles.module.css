@@ -1,0 +1,24 @@
+.introduction_container {
+  background-color: #1f2833;
+}
+
+.introText {
+  text-align: center;
+}
+
+.introText div:nth-child(1),
+.introText div:nth-child(3),
+.introText div:nth-child(4) {
+  color: white;
+  font-size: 2rem;
+}
+
+.introText div:nth-child(2) {
+  color: #3fe4d9;
+  font-size: 4rem;
+}
+
+.button_container button {
+  font-size: 1.5rem;
+  border-radius: 20px 20px 20px 20px;
+}

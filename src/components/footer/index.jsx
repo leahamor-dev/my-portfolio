@@ -1,15 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './styles.module.css';
 
-const Footer = (props) => {
+const Footer = () => {
   return (
-    <>
-      <div className={`${styles.footer}`}>
-        <div className="d-flex flex-row-reverse py-3">
-          <div className="mx-4">© 2024 All Rights Reserved</div>
-        </div>
-      </div>
-    </>
+    <div id="footer" className={`${styles.footer} py-3`}>
+      <div className="mx-4">© 2024 All Rights Reserved</div>
+    </div>
   );
 };
 

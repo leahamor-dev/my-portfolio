@@ -4,6 +4,8 @@ import { Button, Container, Row, Col } from 'reactstrap';
 import { Link } from 'react-scroll';
 import styles from './styles.module.css';
 
+import Header from '../../header';
+
 const Introduction = () => {
   const onButtonClick = () => {
     const pdfUrl = '../pdf/Leah-Amor-Salgado.pdf';
@@ -17,45 +19,37 @@ const Introduction = () => {
   return (
     <div id="introduction" className={styles.introduction_container}>
       <Container fluid>
-        <Row
-          className={`align-items-center d-flex justify-content-around`}
-          style={{
-            minHeight: '100vh',
-            fontFamily: 'Poppins',
-          }}
-        >
-          <Col sm={12} lg={6} className={styles.introText}>
-            <div>Hi there, I'm</div>
-            <div>Leah Amor Salgado</div>
-            <div>Web developer</div>
-            <div>
-              3 years working experience using ReactJS, NodeJS and ExpressJS
-            </div>
+        <Row className={`${styles.customRow}`}>
+          <Header />
+          <Row className="h-100 w-100 align-items-center w-100 mt-5 pt-5">
+            <Col xs={12} lg={8} className={`${styles.introText}`}>
+              <div>Hi there, I'm</div>
+              <div>Leah Amor Salgado</div>
+              <div>Web developer</div>
+              <div>
+                3 years working experience using ReactJS, NodeJS and ExpressJS
+              </div>
 
-            <div className={`${styles.button_container} my-4`}>
-              <Link to="contact">
-                <Button className="mx-3 mb-3" color="info" outline>
-                  Contact me
+              <div className={`${styles.button_container} my-4`}>
+                <Link to="contact">
+                  <Button className="mx-3 mb-3" color="info" outline>
+                    Contact me
+                  </Button>
+                </Link>
+                <Button
+                  className="mx-3 mb-3"
+                  color="info"
+                  outline
+                  onClick={onButtonClick}
+                >
+                  Download Resume
                 </Button>
-              </Link>
-              <Button
-                className="mx-3 mb-3"
-                color="info"
-                outline
-                onClick={onButtonClick}
-              >
-                Download Resume
-              </Button>
-            </div>
-          </Col>
-          <Col sm={12} lg={6} className="rightside pb-5 text-center">
-            <img
-              src="../images/picture.png"
-              alt="My Image"
-              height="80%"
-              width="60%"
-            />
-          </Col>
+              </div>
+            </Col>
+            <Col xs={12} lg={4} className="rightside pb-5 text-center">
+              <img src="../images/picture.png" alt="My Image" width="75%" />
+            </Col>
+          </Row>
         </Row>
       </Container>
     </div>

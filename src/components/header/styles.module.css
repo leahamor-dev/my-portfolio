@@ -1,5 +1,6 @@
 .header_navbar {
-  background-color: #1f2833;
+  /* background-color: #1f2833; */
+  background-color: #3d4a5a;
   color: #ffffff;
   font-size: 1.5rem;
 }
@@ -17,4 +18,24 @@
 .header_navbar_links:hover {
   color: #66fcf1;
   cursor: pointer;
+}
+
+.navbarToggler {
+  color: white;
+  border: none;
+}
+.navbarToggler:hover {
+  color: #3fe4d9;
+}
+
+@media (min-width: 576px) {
+  .navbarToggler {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .navItems {
+    display: none;
+  }
 }

@@ -46,7 +46,7 @@ const Education = () => {
                   <VerticalTimelineElement
                     key={`education-${idx}`}
                     date={
-                      <div className={idx % 2 == 0 ? 'd-flex' : ''}>
+                      <div className={`${idx % 2 == 0 ? 'd-flex' : ''} h5`}>
                         <b>{educationHistory.year}</b>
                       </div>
                     }
@@ -56,7 +56,7 @@ const Education = () => {
                     }}
                     icon={<FontAwesomeIcon icon={faGraduationCap} />}
                   >
-                    <div className="text-center">
+                    <div className="text-center mb-3">
                       <h3 className="mb-3 vertical-timeline-element-title">
                         {educationHistory.level}
                       </h3>

@@ -18,15 +18,15 @@ const Experience = () => {
       date: 'March 2020 - July 2023',
       location: 'Remote',
       description: [
-        'Proven ability to work as a team to maintain, enhance, and create new features for a website.',
-        'Expertise in debugging to keep a website stable and bug free.',
-        'Strong understanding of React.js and Node.js, and the ability to work on both the front-end and back-end sides of a website.',
-        "Skilled in creating automated tests using Cypress.io, spearheaded company's first Cypress.io project and conducted knowledge transfer to other team members.",
-        'Experienced in converting created designs in Figma into working components.',
-        'Able to create usable and maintainable components and functions.',
-        'Proactive in exploring libraries that can be used or replace existing libraries for better integration, stabilization, and more security.',
-        'Knowledgeable in managing data and storing it in Redux store & database.',
-        'Experienced in creation and integration of APIs and middlewares.',
+        'Works in a team where we use Agile methodology (SCRUM)',
+        'Maintain, enhance, and create new features for a website.',
+        'Debugging to keep a website stable and bug free.',
+        'Works on both front-end and back-end using ReactJS and NodeJS',
+        'Creating automated tests using Cypress.io',
+        'Converting created designs in Figma into working components.',
+        'Create usable and maintainable components and functions.',
+        'Managing data and storing it in Redux store & database.',
+        'Creating and integrating APIs and middlewares.',
       ],
       type: 'work',
     },
@@ -91,7 +91,9 @@ const Experience = () => {
                     key={`experience-${idx}`}
                     date={
                       <div
-                        className={`${idx % 2 == 0 ? 'd-flex' : ''} text-white`}
+                        className={`${
+                          idx % 2 == 0 ? 'd-flex' : ''
+                        } text-warning h5`}
                       >
                         {job.date}
                       </div>

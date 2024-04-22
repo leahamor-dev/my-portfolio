@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './styles.module.css';
+import CarouselComponent from './Carousel';
 
 import {
   Container,
@@ -19,7 +20,6 @@ import {
   CardImg,
   UncontrolledCarousel,
 } from 'reactstrap';
-import { height } from '@fortawesome/free-brands-svg-icons/fa42Group';
 
 const Projects = () => {
   const projects = [
@@ -41,7 +41,7 @@ const Projects = () => {
       title: 'UI Revamp',
       description:
         'It includes additional Dashboard page, Collapsible sidebar, Responsive UI, and some UI changes',
-      tags: 'React Libraries, CSS, Bootstrap/Reactstrap, ReactJS',
+      tags: 'ReactJS, React Libraries, CSS, Bootstrap/Reactstrap',
       images: [
         '../images/ui_revamp/1.png',
         '../images/ui_revamp/2.png',
@@ -79,14 +79,14 @@ const Projects = () => {
       title: 'Database Manipulation and API Creation',
       description:
         'Fetching, Inserting, Updating, Deleting data from the database. Accessing database through API, Uploading and Downloading files',
-      tags: 'NodeJS, AgensGraph, Cypher',
-      images: ['../images/neo4j.png'],
+      tags: 'NodeJS,  ExpressJS, AgensGraph (Cypher)',
+      images: ['../images/expressjs.png', '../images/neo4j.png'],
     },
     {
       title: 'Create Forms with Validations',
       description:
         'Creating form with fields validation that will prompt an error message when criteria is not met',
-      tags: 'ReactJS, React Libraries, Formik, Yup',
+      tags: 'ReactJS, Formik, Yup',
       images: [
         '../images/forms_validation/1.png',
         '../images/forms_validation/2.png',
@@ -133,19 +133,7 @@ const Projects = () => {
                     {proj.description}
                   </CardText>
                   <CardBody className="p-0">
-                    {proj.images && proj.images.length > 1 ? (
-                      <UncontrolledCarousel
-                        dark
-                        items={proj.images.map((img, idx) => {
-                          return {
-                            key: idx + 1,
-                            src: img,
-                          };
-                        })}
-                      />
-                    ) : (
-                      <CardImg height={280} src={proj.images} />
-                    )}
+                    <CarouselComponent proj={proj} />
                   </CardBody>
                   <CardText
                     className="mt-3 h-100"

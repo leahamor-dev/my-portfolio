@@ -27,7 +27,7 @@ const Introduction = () => {
               <div>Leah Amor Salgado</div>
               <div>Web developer</div>
               <div>
-                3 years working experience using ReactJS, NodeJS and ExpressJS
+                3+ years working experience using ReactJS, NodeJS and ExpressJS
               </div>
 
               <div className={`${styles.button_container} my-4`}>

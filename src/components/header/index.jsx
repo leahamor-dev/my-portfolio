@@ -1,14 +1,6 @@
 import React, { useState } from 'react';
 import styles from './styles.module.css';
-import {
-  Link,
-  DirectLink,
-  Element,
-  Events,
-  animateScroll as scroll,
-  scrollSpy,
-  scroller,
-} from 'react-scroll';
+import { Link } from 'react-scroll';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
@@ -25,7 +17,6 @@ import {
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-
   const toggle = () => setIsOpen(!isOpen);
 
   const navItems = [
@@ -37,11 +28,26 @@ const Header = () => {
     { title: 'Contact' },
   ];
 
+  const navItemsComponent = navItems.map((item) => {
+    return (
+      <NavItem key={item.title}>
+        <NavLink
+          offset={-80}
+          tag={Link}
+          to={item.title.toLocaleLowerCase()}
+          className={`${styles.header_navbar_links}`}
+        >
+          {item.title}
+        </NavLink>
+      </NavItem>
+    );
+  });
+
   return (
     <div id="header">
       <Navbar
         id="header_navbar"
-        className={`${styles.header_navbar} mb-5`}
+        className={`${styles.header_navbar}`}
         fixed="top"
       >
         <NavbarBrand
@@ -50,21 +56,7 @@ const Header = () => {
         >
           <div>LA</div>
         </NavbarBrand>
-        <Nav className={styles.navItems}>
-          {navItems.map((item) => {
-            return (
-              <NavItem key={item.title}>
-                <NavLink
-                  tag={Link}
-                  to={item.title.toLocaleLowerCase()}
-                  className={`${styles.header_navbar_links}`}
-                >
-                  {item.title}
-                </NavLink>
-              </NavItem>
-            );
-          })}
-        </Nav>
+        <Nav className={styles.navItems}>{navItemsComponent}</Nav>
 
         <Button
           className={styles.navbarToggler}
@@ -76,21 +68,7 @@ const Header = () => {
         </Button>
 
         <Collapse isOpen={isOpen} navbar>
-          <Nav navbar>
-            {navItems.map((item) => {
-              return (
-                <NavItem key={item.title}>
-                  <NavLink
-                    tag={Link}
-                    to={item.title.toLocaleLowerCase()}
-                    className={`${styles.header_navbar_links}`}
-                  >
-                    {item.title}
-                  </NavLink>
-                </NavItem>
-              );
-            })}
-          </Nav>
+          <Nav navbar>{navItemsComponent}</Nav>
         </Collapse>
       </Navbar>
     </div>

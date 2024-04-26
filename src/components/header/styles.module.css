@@ -3,6 +3,8 @@
   background-color: #3d4a5a;
   color: #ffffff;
   font-size: 1.5rem;
+  min-height: 80px;
+  font-family: Lato;
 }
 
 .header_navbar_brand,

@@ -36,6 +36,10 @@ const Skills = () => {
       title: 'The Complete Node.js Developer Course (3rd Edition)',
       source: 'Udemy.com',
     },
+    {
+      title: 'Responsive Web Design (May 1, 2024)',
+      source: 'freeCodeCamp.org ',
+    },
   ];
 
   return (

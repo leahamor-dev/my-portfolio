@@ -9,10 +9,9 @@ const corsOptions = {
 
 const app = express();
 let db;
-
 app.use(cors(corsOptions));
 
-app.use('/', (req, res) => res.send('Server is running'));
+app.get('/', (req, res) => res.send('Server is running'));
 
 connectToDb((err) => {
   if (!err) {

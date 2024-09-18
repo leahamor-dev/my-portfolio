@@ -1,46 +1,12 @@
 import React from 'react';
 import { Container, Col, Row, Progress } from 'reactstrap';
 import styles from './styles.module.css';
+import { useSelector } from 'react-redux';
 
 const Skills = () => {
-  const skills = [
-    { text: 'HTML, CSS', percentage: 90 },
-    { text: 'ReactJS', percentage: 85 },
-    { text: 'NodeJS, ExpressJS', percentage: 70 },
-    { text: 'Javascript, Typescript', percentage: 70 },
-    { text: 'SQL, Cypher', percentage: 80 },
-    { text: 'Cypress.io', percentage: 80 },
-    { text: 'PHP', percentage: 50 },
-  ];
-
-  const sortedSkills = skills.sort((a, b) => b.percentage - a.percentage);
-
-  const knowledge = [
-    'Proficient in Microsoft Office/O365',
-    'Knowledgeable in State management (Redux) and React Hooks',
-    'Knowledgeable in Rest API and Postman',
-    'Knowledgeable in Git and Sourcetree',
-    'Bootstrap & Reactstrap',
-    'Agile (Scrum) and Azure DevOps',
-    'Visual Studio Code',
-    'Knowledgeable in creating automation script using Cypress.io',
-    'Figma',
-  ];
-
-  const trainingsAndCertifications = [
-    {
-      title: 'React – The Complete Guild (incl Hooks, React Router, Redux)',
-      source: 'Udemy.com',
-    },
-    {
-      title: 'The Complete Node.js Developer Course (3rd Edition)',
-      source: 'Udemy.com',
-    },
-    {
-      title: 'Responsive Web Design (May 1, 2024)',
-      source: 'freeCodeCamp.org ',
-    },
-  ];
+  const skillState = useSelector((state) => state.skills);
+  const languagesState = useSelector((state) => state.languages);
+  const certificationState = useSelector((state) => state.certifications);
 
   return (
     <div id="skills" className={styles.base}>
@@ -53,49 +19,54 @@ const Skills = () => {
           <Row className="mb-4">
             <Col>
               <div className="h4">Trainings & Certifications</div>
-              {trainingsAndCertifications.map((tac) => {
-                return (
-                  <li>
-                    {tac.title} - <i>{tac.source}</i>
-                  </li>
-                );
-              })}
+              {certificationState &&
+                certificationState.map((tac, idx) => {
+                  return (
+                    <li key={`trainingAndCert-${idx}`}>
+                      {tac.title} - <i>{tac.source}</i>
+                    </li>
+                  );
+                })}
             </Col>
           </Row>
           <Row>
             <Col xs={12} className="h4">
               Technical Skills
             </Col>
-            {knowledge.map((k) => {
-              return (
-                <Col lg={6}>
-                  <li>{k}</li>
-                </Col>
-              );
-            })}
+            {skillState &&
+              skillState.map((k, idx) => {
+                return (
+                  <Col key={`knowledge-${idx}`} lg={12}>
+                    <li>{k.name}</li>
+                  </Col>
+                );
+              })}
           </Row>
 
           <Row className="my-4">
-            {sortedSkills.map((skill, idx) => {
-              return (
-                <Col key={`skill-${idx}`} className="py-2" lg={12}>
-                  <div className="d-flex" style={{ fontSize: '1.25rem' }}>
-                    {skill.text}
-                  </div>
+            {languagesState &&
+              languagesState
+                .sort((a, b) => b.percentage - a.percentage)
+                .map((skill, idx) => {
+                  return (
+                    <Col key={`skill-${idx}`} className="py-2" lg={12}>
+                      <div className="d-flex" style={{ fontSize: '1.25rem' }}>
+                        {skill.language}
+                      </div>
 
-                  <div>
-                    <Progress
-                      className="my-2"
-                      color="primary"
-                      value={skill.percentage}
-                      animated
-                    >
-                      {skill.percentage}%
-                    </Progress>
-                  </div>
-                </Col>
-              );
-            })}
+                      <div>
+                        <Progress
+                          className="my-2"
+                          color="primary"
+                          value={skill.percentage}
+                          animated
+                        >
+                          {skill.percentage}%
+                        </Progress>
+                      </div>
+                    </Col>
+                  );
+                })}
           </Row>
         </Row>
       </Container>

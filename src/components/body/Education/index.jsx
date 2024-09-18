@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -10,27 +11,7 @@ import { Container, Row, Col } from 'reactstrap';
 import styles from './styles.module.css';
 
 const Education = () => {
-  const educationHistories = [
-    {
-      level: 'TERTIARY',
-      name: 'Pamantasan ng Lungsod ng Pasig ',
-      year: 'S. Y.  2013-2017',
-      course: 'Bachelor of Science in Computer Science ',
-      icon: faGraduationCap,
-    },
-    {
-      level: 'SECONDARY',
-      name: 'La Immaculada Concepcion School',
-      year: 'S. Y. 2009-2013',
-      icon: faSchool,
-    },
-    {
-      level: 'PRIMARY',
-      name: 'La Immaculada Concepcion School',
-      year: 'S. Y. 2003-2009',
-      icon: faSchool,
-    },
-  ];
+  const educationState = useSelector((state) => state.education);
 
   return (
     <div id="education" className={styles.education_container}>
@@ -41,36 +22,37 @@ const Education = () => {
         <Row className="section_body">
           <Col>
             <VerticalTimeline>
-              {educationHistories.map((educationHistory, idx) => {
-                return (
-                  <VerticalTimelineElement
-                    key={`education-${idx}`}
-                    date={
-                      <div className={`${idx % 2 == 0 ? 'd-flex' : ''} h5`}>
-                        <b>{educationHistory.year}</b>
-                      </div>
-                    }
-                    iconStyle={{
-                      background: '#202833',
-                      color: '#3fe4d9',
-                    }}
-                    icon={<FontAwesomeIcon icon={faGraduationCap} />}
-                  >
-                    <div className="text-center mb-3">
-                      <h3 className="mb-3 vertical-timeline-element-title">
-                        {educationHistory.level}
-                      </h3>
+              {educationState &&
+                educationState.map((educationHistory, idx) => {
+                  return (
+                    <VerticalTimelineElement
+                      key={`education-${idx}`}
+                      date={
+                        <div className={`${idx % 2 == 0 ? 'd-flex' : ''} h5`}>
+                          <b>S. Y. {educationHistory.year}</b>
+                        </div>
+                      }
+                      iconStyle={{
+                        background: '#202833',
+                        color: '#3fe4d9',
+                      }}
+                      icon={<FontAwesomeIcon icon={faGraduationCap} />}
+                    >
+                      <div className="text-center mb-3">
+                        <h3 className="mb-3 vertical-timeline-element-title">
+                          {educationHistory.level}
+                        </h3>
 
-                      <h4 className="vertical-timeline-element-subtitle">
-                        {educationHistory.name}
-                      </h4>
-                      {educationHistory.course && (
-                        <div>{educationHistory.course}</div>
-                      )}
-                    </div>
-                  </VerticalTimelineElement>
-                );
-              })}
+                        <h4 className="vertical-timeline-element-subtitle">
+                          {educationHistory.name}
+                        </h4>
+                        {educationHistory.course && (
+                          <div>{educationHistory.course}</div>
+                        )}
+                      </div>
+                    </VerticalTimelineElement>
+                  );
+                })}
             </VerticalTimeline>
           </Col>
         </Row>

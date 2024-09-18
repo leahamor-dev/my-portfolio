@@ -3,7 +3,7 @@ import axios from 'axios';
 export const fetchData = () => (dispatch /* ,getState */) => {
   const config = {
     method: 'GET',
-    url: 'http://localhost:5000/data',
+    url: 'https://salgado-app-server.vercel.app//data',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',

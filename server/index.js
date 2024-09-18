@@ -12,6 +12,8 @@ let db;
 
 app.use(cors(corsOptions));
 
+app.use('/', (req, res) => res.send('Server is running'));
+
 connectToDb((err) => {
   if (!err) {
     app.listen(5000, () => {

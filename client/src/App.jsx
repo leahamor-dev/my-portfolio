@@ -13,9 +13,12 @@ const App = () => {
 
   useEffect(() => {
     if (!isLoaded) {
-      dispatch(fetchData());
+      dispatch(fetchData()).then((res) => {
+        if (res.success) {
+          setIsLoaded(true);
+        }
+      });
     }
-    setIsLoaded(true);
   }, []);
 
   return (

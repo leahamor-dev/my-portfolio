@@ -10,14 +10,16 @@ export const fetchData = () => (dispatch /* ,getState */) => {
     },
   };
 
-  axios(config)
+  return axios(config)
     .then((response) => {
       dispatch({
         type: 'ADD_DATA',
         data: response.data.data,
       });
+
+      return { success: true };
     })
     .catch((error) => {
-      console.log(error);
+      return { success: false, error: error };
     });
 };
